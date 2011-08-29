@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<!--
+    JavaScript Password Manager — Copyright (C) 2011 Vegard Nossum
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>JavaScript Password Manager</title>
+	<link rel="stylesheet" href="default.css" type="text/css" />
+	<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="jquery.sha256.js"></script>
+	<script type="text/javascript" src="jquery.base64.js"></script>
+	<script type="text/javascript" src="pwman.js"></script>
+</head>
+
+<body>
+
+<div id="main">
+<h1>JavaScript Password Manager</h1>
+
+<div id="account">
+<!-- Make sure that if (for some reason) the form is submitted, it never
+     submits to any real URL. Also use method="post" here for the simple
+     reason that there is no way form data can end up in the query part
+     of the URL. -->
+<form action="about:blank" method="post">
+<table>
+<tr>
+<th>Passphrase:</th>
+<th>Tag:</th>
+<th></th>
+</tr>
+
+<tr>
+<td><div class="text"><input id="passphrase" class="hidden" type="password" autocomplete="off" size="24" /></div></td>
+<td><div class="text"><input id="tag" class="hidden" type="text" autocomplete="off" size="16" /></div></td>
+<td><div class="submit"><input type="submit" value="Generate password" /></div></td>
+</tr>
+</table>
+</form>
+</div>
+
+<div id="password">
+<h2>Password</h2>
+<table>
+<tr><td><span></span></td></tr>
+</table>
+</div>
+
+<div id="footer">
+<p><a id="help" href="#">What is this?</a></p>
+
+<div id="help-text">
+<h2>What is a password manager?</h2>
+<p>See the <a href="http://en.wikipedia.org/wiki/Password_manager">Wikipedia article</a>. In short, password managers are used to recall one of multiple passwords for different purposes using a single “master password” (or passphrase, or key). Keep in mind, however, that this is not a regular password manager; we do not store your passwords <em>at all</em>.</p>
+
+<h2>How does it work?</h2>
+<p>Instead of storing your passwords (encrypted or not), the passwords are <em>generated</em> using your master passphrase plus a modifier tag as the input to a <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic hash function</a>. The hash function ensures that 1. nobody will be able to determine your master passphrase given one (or more) of your passwords; and that 2. your passwords are hard to crack using brute force.</p>
+
+<h2>How do I use it?</h2>
+<p>Enter your master passphrase and a tag for the password and click “Generate password”. It's that easy!</p>
+
+<h2>Is it safe?</h2>
+<p>Well, that depends. The most likely threat to safety is that your computer gets infected with a <a href="http://en.wikipedia.org/wiki/Keystroke_logging">key logger</a> that records your passphrase and transmits it to the hacker who installed the key logger. Another plausible threat is that somebody hacks the web server that hosts the password manager and modifies it to steal the passphrases of all the users of this service. One way to mitigate these threats is to <a href="https://github.com/vegard/pwman">download the password manager</a> to your own computer and disconnect the computer from the Internet.</p>
+
+<h2>What is a (good) passphrase?</h2>
+<p>See the <a href="http://en.wikipedia.org/wiki/Passphrase">Wikipedia article</a>. Please see the xkcd comic <a href="http://xkcd.com/936">“Password Strength”</a> for an illustration of why passphrases are better than passwords. Your passphrase should have <em>at least</em> 5 random words or 12 random alphanumeric characters.</p>
+
+<h2>What is the purpose of the “tag” field?</h2>
+<p>The tag is a short string that identifies the purpose of the password you want to generate. For example, if you would like to use the password manager for your amazon.com account, you could enter “amazon” here. (You will, of course, also have to remember the tag you used when you first set your password at the website in question. For this reason, we suggest that tags are entered as single, lowercase words. Use “yahoo” for your Yahoo! account, “gmail” for your Gmail account, “hotmail” for your Hotmail account, etc.)</p>
+</div>
+
+<p>JavaScript Password Manager &mdash; Copyright (C) 2011  Vegard Nossum</p>
+
+<p>This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under <a href="COPYING.html">certain conditions.</a> (<a href="https://github.com/vegard/pwman">Source code</a>)</p>
+</div>
+
+</div>
+
+</body>
+</html>
