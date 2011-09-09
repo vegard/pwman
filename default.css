@@ -35,6 +35,10 @@ table {
 	text-align: left;
 }
 
+form input:focus {
+	background: #cfc;
+}
+
 form .text {
 	border: 1px solid black;
 	padding: 0;

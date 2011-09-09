@@ -77,4 +77,6 @@ window.onload = function () {
 
 	$('#password').hide();
 	$('#help-text').hide();
+
+	$('#passphrase').focus();
 }
